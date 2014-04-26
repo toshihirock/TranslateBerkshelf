@@ -85,13 +85,19 @@ berks install コマンド実行後、あなたは"cookbooksはどこにある�
 
 >The Berkshelf is a location on your local disk which contains the cookbooks you have installed and their dependencies. By default, The Berkshelf is located at ~/.berkshelf but this can be altered by setting the environment variable BERKSHELF_PATH.
 
-The Berkshlefはローカルにcookbookと依存しているcookbookを保存します。
+The Berkshlefはインストールしたcookbookとそれに依存しているcookbookをローカルに保存します。
 デフォルトでは`~/.berkshelf`に配置されますが、`BERKSHELF_PATH`という環境変数を指定する事で変更する事が出来ます。
 
 >Berkshelf stores every version of a cookbook that you have ever installed. This is the same pattern found with RubyGems where once you have resolved and installed a gem, you will have that gem and it’s dependencies until you delete it.
 
-Berskshelfはインストールした各cookbookをバージョンごとに保存しています。
+Berskshelfはこれまでにインストールした各cookbookをバージョンごとに保存しています。
+RubyGemsと同じように一度でもインストールしたものは削除するまで依存するものを含め、保持します。
 
 >This central location is not the typical pattern of cookbook storage that you may be used to with Chef. The traditional pattern is to place all of your cookbooks in a directory called cookbooks or site-cookbooks within your Chef Repository. We do have all of our cookbooks in one central place, it’s just not the Chef Repository and they’re stored within directories named using the convention {name}-{version}.
+
+Chefを使う場合において、cookbookを共通の中心的な場所に置くのは一般的な手法ではありません。
+cookbookはChefリポジトリの`bookbooks`もしくは`site-cookbooks`と呼ばれるディレクトリに配置するのが一般的な手法となります。
+Berfshlefでは全てのCookbookは共通の中心的な場所に置かれます。そこはChefリポジトリではなく、cookbookは{名称}-{バージョン}というルールで保持されています。
+
 
 
