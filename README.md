@@ -279,8 +279,7 @@ Berksheflプラグインを実行するときにVagrantのChef soloとChef Cline
 
 >The Chef Solo provisioner’s cookbook_path attribute is hijacked when using the Vagrant Berkshelf plugin. Cookbooks resolved from your Berksfile will automatically be made available to your Vagrant virtual machine. There is no need to explicitly set a value for cookbook_path attribute.
 
-Vagratn Berkshlefプラグインを利用している場合、Chef Soloプロビジョナーの`cookbook_path`属性は
-は乗っ取られます。
+Vagratn Berkshlefプラグインを利用している場合、Chef Soloプロビジョナーの`cookbook_path`属性は乗っ取られます。
 Berksfileから見つけられたcookbookは自動でVMに適応されます。
 上記では`cookbook_path`を設定する必要はありません。
 
@@ -290,5 +289,44 @@ Berksfileから見つけられたcookbookは自動でVMに適応されます。
 
 VagrantfileでChef Clientプロビジョナーの設定をしている場合、Cookbookは自動的にChef Serverにアップロードされます。
 Bershelf設定の`chef.node_name`と`chef.client_key`で指定した証明情報はアップロード時に利用されます。
+
+## THE BERKSFILE
+
+>Dependencies are managed via the file Berksfile. The Berksfile is like Bundler’s Gemfile. Entries in the Berskfile are known as sources. It contains a list of sources identifying what Cookbooks to retrieve and where to get them.
+
+依存関係は`Berksfile`によって管理されます。
+BerksfileはBundlerのGemfileのようなものです。
+Berkfileの項目は情報源として知られ、何のCookbookを取得するか、またどこから取得するかの情報を含んでいます。
+
+	source "https://api.berkshelf.com"
+
+	metadata
+
+	cookbook 'memcached'
+	cookbook 'nginx'
+	cookbook 'pvpnet', path: '/Users/reset/code/riot-cookbooks/pvpnet-cookbook'
+	cookbook 'mysql', git: 'git://github.com/opscode-cookbooks/mysql.git'
+
+>All dependencies and their dependencies (and their dependencies, etc) will be downloaded, recursively. Two keywords can be used for defining dependencies.
+
+全ての依存するもの、またそれに依存するもの（それにまた依存しているもの）は再起的にダウンロードされます。依存関係を明確にするために、2つのキーワードを使う事ができます。
+
+## METADATA KEYWORD
+
+>The metadata keyword is like saying gemspec in Bundler’s Gemfile. It says, “There is a metadata.rb file within the same relative path of my Berksfile”. This allows you to resolve a Cookbook’s dependencies that you are currently working on just like you would resolve the dependencies of a Gem that you are currently working on with Bundler.
+
+metadataキーワードは言うなれば`gemspec`がBundlerの[Gemfile](http://bundler.io/man/gemfile.5.html "Gemfile")に存在するようなものです。
+"metadata.rbがBerksfileと同じ相対パス上に存在する"ことを意味してます。
+これはあなたにCookbookの依存関係の解決をGemの依存関係をBundlerを使って解決する方法と同じようにする事が出来るようにします。
+
+>Given a Berksfile at ~/code/nginx-cookbook containing:
+
+`~/code/nginx-cookbook`に配置されたBerksfileは以下を含みます。
+
+	metadata
+
+>A metadata.rb file is assumed to be located at ~/code/nginx-cookbook/metadata.rb describing your nginx cookbook.
+
+上記ではnginx cookbookについて記述された`metadata.rb`は`~/code/nginx-cookbook/metadata.rb`に配置されているでしょう。
 
 
