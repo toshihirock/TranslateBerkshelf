@@ -15,24 +15,24 @@ BerkshelfはBerkshelf Core Team によってメンテナンスされています
 >Berkshelf is now included as part of the Chef-DK. This is fastest, easiest, and the recommended installation method for getting up and running with Berkshelf.
 
 Berkshelfは現在Chef-DK(Chef Deploymant Kit)の一部として提供されています。
-上記は高速かつ、簡単に動作させる事ができ、Berkshelfのインストールの方法として推奨しています。
+上記は簡単かつ、あっという間に動作させる事ができ、Berkshelfのインストールの方法として推奨しています。
 
 >Generate a Berksfile in a pre-exisitng cookbook
 
-既にcookbookが存在する時のBerksfile作成する場合
+既に存在するcookbook内にBerkshileを作成する場合
 
 	$ cd my-cookbook
 	$ berks init .
 
 >Or create a new cookbook
 
-新しくcookbookを作成し、Berksfileを作成する場合
+新しくcookbookを作成する場合
 
 	$ berks cookbook myapp
 
 >And specify your dependencies in a Berksfile in your cookbook’s root
 
-そしてcookbookフォルダ直下のBerksfileに必要なcookbookを記述してください
+そしてcookbookフォルダ直下のBerksfileに必要なcookbookを記述してください。
 
 	source "https://api.berkshelf.com"
 
@@ -51,13 +51,13 @@ Berkshelfは現在Chef-DK(Chef Deploymant Kit)の一部として提供されて�
 
 >If at anytime you are stuck or if you’re just curious about what Berkshelf can do, just type the help command
 
-行き詰まった場合やBerfshlefは何をする事が出来るか確認したい場合にはhelpコマンドを利用します
+行き詰まった場合やBerfshlefは何をする事が出来るか確認したい場合にはhelpコマンドを利用します。
 
 	$ berks help
 
 >You can get more detailed information about a command, or a sub command, but asking it for help
 
-コマンドやサブコマンドの詳細について知りたい場合にもhelpコマンドが利用出来ます
+helpコマンドを利用することでコマンドやサブコマンドの詳細を知ることが出来ます。
 
 	$ berks install help
 
@@ -122,7 +122,7 @@ Cookbookのmetadataにname属性の記載は必須となっています。
 
 >A single archive containing all of your required cookbooks can be created with the package command
 
-packageコマンドであなたが必要なcookbookを一つのアーカイブにする事が出来ます。
+packageコマンドによって必要なcookbookを一つにまとめたアーカイブを作成することが出来ます。
 
 	$ cd ~/code/berkshelf-api/cookbook
 	$ berks package
@@ -130,7 +130,7 @@ packageコマンドであなたが必要なcookbookを一つのアーカイブ�
 
 >This archive an be given directly to Chef-Solo or extracted and uploaded to a Chef Server.
 
-このアーカイブは直接Chef-Soloで利用でき、ChefServerへのアップロードも出来る。
+このアーカイブは直接Chef-Soloで利用でき、またChefSeverにアップロードしたり、アップロードしたものを取得する事も出来る。
 
 ## VENDORING COOKBOOKS
 
@@ -192,7 +192,7 @@ Berkshlefは設定をしなければデフォルトで設定で動作します�
 
 >vagrant.vm.provision - use the chef_solo or chef_client provisioner? (default: chef_solo)
 
-+ プロビジョナーとしてChef_soloかchef_clinetを使うか。(デフォルト:chef_solo)
++ Chef_soloかchef_clinetプロビジョナーを使うか。(デフォルト:chef_solo)
 
 >ssl.verify - should we verify all SSL http connections? (default: true)
 
@@ -212,7 +212,7 @@ Berkshlefは設定をしなければデフォルトで設定で動作します�
 
 >github - an array of hashes containing Github credentials to authenticate against downloading cached Github cookbooks.
 
-+ Githubの認証証明書???
++ Githubのcookbookをダウンロードするにあたって認証するためにGithubの証明書を含むハッシュの配列
 
 >The configuration values are notated in ‘dotted path’ format. These translate to a nested JSON structure.
 
