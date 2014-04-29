@@ -329,4 +329,131 @@ metadataキーワードは言うなれば`gemspec`がBundlerの[Gemfile](http://
 
 上記ではnginx cookbookについて記述された`metadata.rb`は`~/code/nginx-cookbook/metadata.rb`に配置されているでしょう。
 
+## COOKBOOK KEYWORD
 
+>The cookbook keyword is a way to describe a cookbook to install or a way to override the location of a dependency.
+
+CookbookキーワードはインストールするCookbookの記述や、cookbookの探索をする場所を上書きする事が出来ます。
+
+>Cookbook sources are defined with the format:
+
+Cookbookソースは以下のフォーマットで定義されています。
+
+	cookbook {name}, {version_constraint}, {options}
+
+>The first parameter is the name and is the only required parameter
+
+最初のパラメーターの`name`は唯一の必須パラメーターです。
+
+	cookbook "nginx"
+
+>The second parameter is a version constraint and is optional. If no version constraint is specified the latest is assumed
+
+2つ目のパラメーターの`version constraint`は任意のパラメーターです。
+指定しなければおそらく最新版がインストールされます。
+
+	cookbook "nginx", ">= 0.101.2"
+
+>Constraints can be specified as
+
+指定方法として以下の表記が出来ます。
+
++ 指定バージョンと同じ (=)
++ 指定バージョンより大きい (>)
++ 指定バージョン以上 (>=)
++ 指定バージョンより小さい (<)
++ 指定バージョン以下 (<=)
++ "~>2.0" とすると、2.x 系列で最新のものになる (~>)
+
+>The final parameter is an options hash
+
+最後のパラメーターは任意のハッシュ値となります。
+
+## SOURCE OPTIONS
+
+>Options passed to a source can contain a location or a group(s).
+
+sourceオプションでCookbookの探索場所やグループの指定が出来ます。
+
+### Locations
+
+>By default the location of a cookbook is assumed to come from one of the api sources that you have configured. For example
+
+デフォルトでは設定されたsourceオプションからcookbookの探索を行います。例えば
+
+	source "https://berks-api.vialstudios.com"
+	source "https://api.berkshelf.com"
+
+>If a cookbook which satisfies all demands is found in berks-api.vialstudios.com then it will be retrieved and used in resolution. If it is not, then any subsequent defined sources will be used. If no sources can satisfy the demand a no solution error will be returned.
+
+上記場合、依存する全てのcookbookが`berks-api.vialstudios.com`に存在すれば本URLのみ利用してcookbookの取得を行います。
+もしなければ、次に定義されたURLから探索を行います。どのsourceからも探索する事が出来なかった場合にはエラーとなります。
+
+>Explicit locations can be used to override the cookbooks found at these sources
+
+明確な探索　それらsourceで見つかったcookbookを使う。
+
+### Path Location
+
+>The Path location is useful for rapid iteration because it does not download, copy, or move the cookbook to The Berkshelf or change the contents of the target. Instead the cookbook found at the given filepath will be used alongside the cookbooks found in The Berkshelf.
+
+Path locationを使えば、ダウンロードではなくBerkshlefや他の場所からのコピーや移動になるので、早く何回も実施したい場合に便利です。
+ファイルパスの指定によって見つけられたcookbookはBerkshlefから見つかったcookbookと同じように利用されます。
+
+	cookbook "artifact", path: "/Users/reset/code/artifact-cookbook"
+
+>The value given to the path key can only contain a single cookbook and must contain a metadata.rb file.
+
+`path`で指定するディレクトリでは一つのcookbookのみ含むものとし、必ず`metadara.rb`を配置する必要があります。
+
+### Git Location
+
+>The Git location will clone the given Git repository to The Berkshelf if the Git repository contains a valid cookbook.
+
+Git Location は指定されたGitリポジトリが有効なcookbookであればBerkshelfにcloneを行います。
+
+	cookbook "mysql", git: "https://github.com/opscode-cookbooks/mysql.git"
+
+>Given the previous example, the cookbook found at the HEAD revision of the opscode-cookbooks/mysql Github project will be cloned to The Berkshelf.
+
+上記例では、Githubプロジェクトのopscode-cookbooks/mysql のHEADリビジョンがBerkshlefにcloneされます。
+
+>An optional branch key can be specified whose value is a branch or tag that contains the desired cookbook.
+
+任意指定のbranchキーを利用する事で指定したbranchやtagのcookbookが取得出来ます。
+
+ cookbook "mysql", git: "https://github.com/opscode-cookbooks/mysql.git", branch: "foodcritic"
+
+>Given the previous example, the cookbook found at branch foodcritic of the opscode-cookbooks/mysql Github project will be cloned to The Berkshelf.
+
+上記例では、Githubプロジェクトのopscode-cookbooks/mysqlのfoodcriticブランチがBerkshlefにcloneされます。
+
+>An optional tag key is an alias for branch and can be used interchangeably.
+
+任意指定のtagキーはbranchキーのエイリアスとなっており、branchキーと同じように利用出来ます。
+
+	cookbook “mysql”, git: “https://github.com/opscode-cookbooks/mysql.git”, tag: “3.0.2”
+
+>Given the previous example, the cookbook found at tag 3.0.2 of the opscode-cookbooks/mysql Github project will be cloned to The Berkshelf.
+
+上記例では、Githubプロジェクトのopscode-cookbooks/mysqlの3.0.2とタグ付けされたcookbookがBerkshlefにcloneされます。
+
+>An optional ref key can be specified for the exact SHA-1 commit ID to use and exact revision of the desired cookbook.
+
+任意指定のrefキーはSHA-1 commit IDを指定してcookbookの取得が出来ます。
+
+	cookbook “mysql”, git: “https://github.com/opscode-cookbooks/mysql.git”, ref: “eef7e65806e7ff3bdbe148e27c447ef4a8bc3881”
+
+>Given the previous example, the cookbook found at commit id eef7e65806e7ff3bdbe148e27c447ef4a8bc3881 of the opscode-cookbooks/mysql Github project will be cloned to The Berkshelf.
+
+上記例では、Githubプロジェクトのopscode-cookbooks/mysqlの3.0.2のコミットID「ef7e65806e7ff3bdbe148e27c447ef4a8bc3881」となっているcookbookがBerkshlefにcloneされます。
+
+>An optional rel key can be specified if your repository contains many cookbooks in a single repository under a sub-directory or at root.
+
+任意指定のrelキーは一つのリポジトリ内のルートディレクトリやサブディレクトリに他のCookbookがある場合に利用出来ます。
+
+	cookbook "rightscale", git: "https://github.com/rightscale/rightscale_cookbooks.git", rel: "cookbooks/rightscale"
+
+>This will fetch the cookbook rightscale from the speficied Git location from under the cookbooks sub-directory.
+
+上記では指定リポジトリのcookbookサブディレクトリからrightscaleというcookbookを取得します。
