@@ -19,14 +19,14 @@ Chef-DKは簡単かつ、すぐに動作させる事ができ、Berkshelfのイ�
 
 >Generate a Berksfile in a pre-exisitng cookbook
 
-既に存在するクックブック内にBerksfileを作成する場合
+既に存在するクックブック内にBerksfileを作成する場合、以下のようにします。
 
 	$ cd my-cookbook
 	$ berks init .
 
 >Or create a new cookbook
 
-新しくクックブックを作成する場合
+新しくクックブックを作成する場合、以下のようにします。
 
 	$ berks cookbook myapp
 
@@ -51,7 +51,7 @@ Chef-DKは簡単かつ、すぐに動作させる事ができ、Berkshelfのイ�
 
 >If at anytime you are stuck or if you’re just curious about what Berkshelf can do, just type the help command
 
-行き詰まった場合やBerfshlefで何をする事が出来るか確認したい場合にはhelpコマンドを利用します。
+行き詰まった場合やBerfshelfで何をする事が出来るか確認したい場合にはhelpコマンドを利用します。
 
 	$ berks help
 
@@ -118,7 +118,7 @@ Berkshelfでは全てのクックブックをChefリポジトリではない共�
 クックブックのmetadataファイルにname属性の記述は必須となっています。
 もし、記述がないようであれば追記する必要があります。
 
-## PACKAGING COOKBOOKS
+### PACKAGING COOKBOOKS
 
 >A single archive containing all of your required cookbooks can be created with the package command
 
@@ -132,7 +132,7 @@ packageコマンドによって必要なクックブック群を一つにまと�
 
 このアーカイブは直接Chef-Soloで利用でき、またChefSeverにアップロードしたり、アップロードしたものを取得する事も出来ます。
 
-## VENDORING COOKBOOKS
+### VENDORING COOKBOOKS
 
 >If you don’t want to create a package but you want to install the cookbooks to a location on disk that is not the berkshelf, you can use the vendor command
 
@@ -148,8 +148,8 @@ packageコマンドによって必要なクックブック群を一つにまと�
 
 >Berkshelf will run with a default configuration unless you explicitly generate one. By default, Berkshelf uses the values found in your Knife configuration (if you have one).
 
-Berkshlefは設定をしていなければデフォルトの設定で動作します。
-また、デフォルトではBerkshelfはKnife Configureで設定された値を利用します。(Kinifeファイルがあれば)
+Berkshelfは設定をしていなければデフォルトの設定で動作します。
+また、デフォルトでBerkshelfはKnife Configureで設定された値を利用します。(Kinifeファイルがあれば)
 
 >You can override this default behavior by create a configuration file and placing it at ~/.berkshelf/config.json
 
@@ -233,19 +233,19 @@ Berkshelfは繰り返し実行するクックブックやアプリに対して�
 
 既に使っている人も継続して使いましょう！
 
-## INSTALL VAGRANT
+### INSTALL VAGRANT
 
 >Visit the Vagrant downloads page and download the latest installer for your operating system.
 
 [Vagrantダウンロードページ](http://www.vagrantup.com/ "Vagrantダウンロードページ")に行って、あなたのOSの最新のインストーラーをダウンロードしましょう。
 
-## INSTALL THE VAGRANT BERKSHELF PLUGIN
+### INSTALL THE VAGRANT BERKSHELF PLUGIN
 
 	$ vagrant plugin install vagrant-berkshelf --plugin-version 2.0.1
 	Installing the 'vagrant-berkshelf' plugin. This can take a few minutes...
 	Installed the plugin 'vagrant-berkshelf (2.0.1)!'
 
-## USING THE VAGRANT BERKSHELF PLUGIN
+### USING THE VAGRANT BERKSHELF PLUGIN
 
 >Once the Vagrant Berkshelf plugin is installed it can be enabled in your Vagrantfile
 
@@ -311,7 +311,7 @@ Berksfileの項目を利用して、何のクックブックを取得するか�
 
 記述された全てのクックブックとそのクックブックに依存するもの（またそれに依存しているもの）は再起的にダウンロードされます。依存関係を明確にするために、2つのキーワードを使う事ができます。
 
-## METADATA KEYWORD
+### METADATA KEYWORD
 
 >The metadata keyword is like saying gemspec in Bundler’s Gemfile. It says, “There is a metadata.rb file within the same relative path of my Berksfile”. This allows you to resolve a Cookbook’s dependencies that you are currently working on just like you would resolve the dependencies of a Gem that you are currently working on with Bundler.
 
@@ -329,7 +329,7 @@ Bundlerを使ってGemの依存関係を解決するようにクックブック�
 
 nginxのクックブックについて記述された`metadata.rb`は`~/code/nginx-cookbook/metadata.rb`に配置されているはずです。
 
-## COOKBOOK KEYWORD
+### COOKBOOK KEYWORD
 
 >The cookbook keyword is a way to describe a cookbook to install or a way to override the location of a dependency.
 
@@ -343,13 +343,13 @@ Cookbookキーワードは以下のフォーマットで定義されています
 
 >The first parameter is the name and is the only required parameter
 
-最初のパラメーターの`name`は唯一の必須パラメーターです。
+最初の`name`パラメーターは唯一の必須パラメーターです。
 
 	cookbook "nginx"
 
 >The second parameter is a version constraint and is optional. If no version constraint is specified the latest is assumed
 
-2つ目のパラメーターの`version constraint`は任意のパラメーターです。
+2つ目の`version constraint`パラメーターは任意のパラメーターです。
 指定しなければ最新版がインストールされるはずです。
 
 	cookbook "nginx", ">= 0.101.2"
@@ -369,13 +369,13 @@ Cookbookキーワードは以下のフォーマットで定義されています
 
 最後のoptionsパラメーターは任意パラメーターでハッシュとなります。
 
-## SOURCE OPTIONS
+### SOURCE OPTIONS
 
 >Options passed to a source can contain a location or a group(s).
 
 クックブックの探索場所やグループの指定が出来ます。
 
-### Locations
+#### Locations
 
 >By default the location of a cookbook is assumed to come from one of the api sources that you have configured. For example
 
@@ -393,7 +393,7 @@ Cookbookキーワードは以下のフォーマットで定義されています
 
 Locationを指定する事で、予め設定されたクックブックの探索場所を上書きする事が出来ます。
 
-### Path Location
+#### Path Location
 
 >The Path location is useful for rapid iteration because it does not download, copy, or move the cookbook to The Berkshelf or change the contents of the target. Instead the cookbook found at the given filepath will be used alongside the cookbooks found in The Berkshelf.
 
@@ -406,7 +406,7 @@ Path locationを使えば、クックブックをダウンロードするので�
 
 `path`で指定するディレクトリでは一つのクックブックのみを含むものとし、必ず`metadara.rb`を配置する必要があります。
 
-### Git Location
+#### Git Location
 
 >The Git location will clone the given Git repository to The Berkshelf if the Git repository contains a valid cookbook.
 
@@ -446,7 +446,7 @@ Git Location は指定されたGitリポジトリが有効なクックブック�
 
 >Given the previous example, the cookbook found at commit id eef7e65806e7ff3bdbe148e27c447ef4a8bc3881 of the opscode-cookbooks/mysql Github project will be cloned to The Berkshelf.
 
-上記例では、Githubのプロジェクト名opscode-cookbooks/mysqlの3.0.2のコミットID`ef7e65806e7ff3bdbe148e27c447ef4a8bc3881`となっているクックブックがBerkshelfにcloneされます。
+上記例では、Githubのプロジェクト名opscode-cookbooks/mysqlの3.0.2のコミットID`eef7e65806e7ff3bdbe148e27c447ef4a8bc3881`となっているクックブックがBerkshelfにcloneされます。
 
 >An optional rel key can be specified if your repository contains many cookbooks in a single repository under a sub-directory or at root.
 
@@ -458,7 +458,7 @@ Git Location は指定されたGitリポジトリが有効なクックブック�
 
 上記では指定リポジトリの`cookbooks`サブディレクトリから`rightscaleと`いうクックブックを取得します。
 
-### GitHub Location
+#### GitHub Location
 
 >As of version 1.0.0, you may now use GitHub shorthand to specify a location.
 
