@@ -15,11 +15,11 @@ BerkshelfはBerkshelf Core Team によってメンテナンスされています
 >Berkshelf is now included as part of the Chef-DK. This is fastest, easiest, and the recommended installation method for getting up and running with Berkshelf.
 
 Berkshelfは現在Chef-DK(Chef Deploymant Kit)の一部として提供されています。
-上記は簡単かつ、すぐに動作させる事ができ、Berkshelfのインストールの方法として推奨しています。
+Chef-DKは簡単かつ、すぐに動作させる事ができ、Berkshelfのインストールの方法として推奨しています。
 
 >Generate a Berksfile in a pre-exisitng cookbook
 
-既に存在するクックブック内にBerkshileを作成する場合
+既に存在するクックブック内にBerksfileを作成する場合
 
 	$ cd my-cookbook
 	$ berks init .
@@ -51,7 +51,7 @@ Berkshelfは現在Chef-DK(Chef Deploymant Kit)の一部として提供されて�
 
 >If at anytime you are stuck or if you’re just curious about what Berkshelf can do, just type the help command
 
-行き詰まった場合やBerfshlefは何をする事が出来るか確認したい場合にはhelpコマンドを利用します。
+行き詰まった場合やBerfshlefで何をする事が出来るか確認したい場合にはhelpコマンドを利用します。
 
 	$ berks help
 
@@ -69,7 +69,7 @@ helpコマンドを利用することでコマンドやサブコマンドの詳�
 	  -o, [--only=one two three]    # 指定したグループのみインストールする
 	  -b, [--berksfile=PATH]        # Berksfileのパス
 	                                # デフォルト:Berksfile
-	  -c, [--config=PATH]           # Berkshlef設定ファイルのパス
+	  -c, [--config=PATH]           # Berkshelf設定ファイルのパス
 	  -F, [--format=FORMAT]         # 利用する出力フォーマット
 	                                # デフォルト：human
 	  -q, [--quiet], [--no-quiet]   # 全ての情報を出力しない
@@ -96,8 +96,8 @@ RubyGemsと同じように一度でもインストールしたものは削除す
 >This central location is not the typical pattern of cookbook storage that you may be used to with Chef. The traditional pattern is to place all of your cookbooks in a directory called cookbooks or site-cookbooks within your Chef Repository. We do have all of our cookbooks in one central place, it’s just not the Chef Repository and they’re stored within directories named using the convention {name}-{version}.
 
 Chefを使う場合において、クックブックを共通の場所に置くのは一般的な手法ではありません。
-クックブックはChefリポジトリの`bookbooks`もしくは`site-cookbooks`と呼ばれるディレクトリに配置するのが一般的な手法となります。
-Berfshlefでは全てのクックブックをChefリポジトリではない共通の場所に配置し、クックブックは{名称}-{バージョン}というルールで配置されています。
+クックブックはChefリポジトリの`cookbooks`もしくは`site-cookbooks`と呼ばれるディレクトリに配置するのが一般的な手法となります。
+Berkshelfでは全てのクックブックをChefリポジトリではない共通の場所に配置し、クックブックは{名称}-{バージョン}というルールで配置します。
 
 >Given you have the cookbooks installed:
 
@@ -160,31 +160,31 @@ Berkshlefは設定をしていなければデフォルトの設定で動作し�
 
 >chef.chef_server_url - URL to a Chef Server API endpoint. (default: whatever is in your Knife file if you have one)
 
-+ Chef SeverのURL(デフォルト：存在すればKnifeファイルの値)
++ Chef SeverのURL(デフォルト:存在すればKnifeファイルの値)
 
 >chef.node_name - your Chef API client name. (default: whatever is in your Knife file if you have one)
 
-+ Chefクライアントの名称。(デフォルト：存在すればKnifeファイルの値)
++ Chefクライアントの名称。(デフォルト:存在すればKnifeファイルの値)
 
 >chef.client_key - filepath to your Chef API client key. (default: whatever is in your Knife file if you have one)
 
-+ Chefクライアントのキーのパス。(デフォルト：存在すればKnifeファイルの値)
++ Chefクライアントのキーのパス。(デフォルト:存在すればKnifeファイルの値)
 
 >chef.validation_client_name - your Chef API’s validation client name. (default: whatever is in your Knife file if you have one)
 
-+ Chef Validationの名称。(デフォルト：存在すればKnifeファイルの値)
++ Chef Validationの名称。(デフォルト:存在すればKnifeファイルの値)
 
 >chef.validation_key_path - filepath to your Chef API’s validation key. (default: whatever is in your Knife file if you have one)
 
-+ Chef Validationのキーのパス。(デフォルト：存在すればknifeファイルの値)
++ Chef Validationのキーのパス。(デフォルト:存在すればknifeファイルの値)
 
 >vagrant.vm.box - name of the VirtualBox box to use when provisioning Vagrant virtual machines. (default: Berkshelf-CentOS-6.3-x86_64-minimal)
 
 + VagrantのVMの名称。(デフォルト:Berkshelf-CentOS-6.3-x86_64-minimal)
 
->vagrant.vm.box_url - URL to the VirtualBox box (default: https://dl.dropbox.com/u/31081437/Berkshelf-CentOS-6.3-x86_64-minimal.box)
+>vagrant.vm.box_url - URL to the VirtualBox box (デフォルト:https://dl.dropbox.com/u/31081437/Berkshelf-CentOS-6.3-x86_64-minimal.box)
 
-+ VagrantVMのURL(デフォルト: https://dl.dropbox.com/u/31081437/Berkshelf-CentOS-6.3-x86_64-minimal.box)
++ VagrantVMのURL(デフォルト::https://dl.dropbox.com/u/31081437/Berkshelf-CentOS-6.3-x86_64-minimal.box)
 
 >vagrant.vm.forward_port - a Hash of ports to forward where the key is the port to forward to on the guest and value is the host port which forwards to the guest on your host.
 
@@ -200,15 +200,15 @@ Berkshlefは設定をしていなければデフォルトの設定で動作し�
 
 >cookbook.copyright - the copyright information should be included when you generate new cookbooks. (default: whatever is in your Knife file if you have one)
 
-+ 新しくクックブックを作成した時に含めるコピーライト(デフォルト：存在すればKnifeファイルの値)
++ 新しくクックブックを作成した時に含めるコピーライト(デフォルト:存在すればKnifeファイルの値)
 
 >cookbook.email - the email address to include when you generate new cookbooks. (default: whatever is in your Knife file if you have one)
 
-+ 新しくクックブックを作成した時に含めるメールアドレス(デフォルト：存在すればKnifeファイルの値)
++ 新しくクックブックを作成した時に含めるメールアドレス(デフォルト:存在すればKnifeファイルの値)
 
 >cookbook.license - the license to use when you generate new cookbooks. (default: whatever is in your Knife file if you have one)
 
-+ 作成した新しいクックブックに含めるライセンス(デフォルト：存在すればKnifeファイルの値)
++ 作成した新しいクックブックに含めるライセンス(デフォルト:存在すればKnifeファイルの値)
 
 >github - an array of hashes containing Github credentials to authenticate against downloading cached Github cookbooks.
 
@@ -224,7 +224,7 @@ Berkshlefは設定をしていなければデフォルトの設定で動作し�
 >Berkshelf was designed for iterating on cookbooks and applications quickly. Vagrant provides us with a way to spin up a virtual environment and configure it using a built-in Chef provisioner. If you have never used Vagrant before - stop now - read the Vagrant documentation and give it a try. Your cookbook development life is about to become 100% better.
 
 Berkshelfは繰り返し実行するクックブックやアプリに対して素早く実施出来るように設計されています。
-[Vagrant](http://www.vagrantup.com/ "Vagrant")はビルトインされたChef プロビジョナーを使って起動する仮想環境の設定を行う方法を提供します。
+[Vagrant](http://www.vagrantup.com/ "Vagrant")ではビルトインされたChef プロビジョナーを使って起動する仮想環境の設定を行う方法を提供します。
 
 まだVagrantを使っていないのであれば本稿を読むのはやめて、Vagrantのドキュメントを読んで試してみてください。
 きっとあなたのクックブック開発ライフは100%良くなる事でしょう！
@@ -249,7 +249,7 @@ Berkshelfは繰り返し実行するクックブックやアプリに対して�
 
 >Once the Vagrant Berkshelf plugin is installed it can be enabled in your Vagrantfile
 
-一度Vagrant Bershelf プラグインをインストールすればVagrantfileでプラグインを有効化する事が出来ます。
+一度Vagrant Berkshelf プラグインをインストールすればVagrantfileでプラグインを有効化する事が出来ます。
 
 	Vagrant.configure("2") do |config|
 	  ...
@@ -259,12 +259,12 @@ Berkshelfは繰り返し実行するクックブックやアプリに対して�
 
 >If your Vagrantfile was generated by Berkshelf it’s probably already enabled
 
-もし、VagrantfileをBerkshelfコマンドを利用して作成してる場合、既にプラグインの有効化はされているでしょう。
+もし、VagrantfileをBerkshelfコマンドを利用して作成している場合、既にプラグインの有効化はされているでしょう。
 
 >The plugin will look in your current working directory for your Berksfile by default. Just ensure that your Berksfile exists and when you run vagrant up, vagrant provision, or vagrant destroy the Berkshelf integration will automatically kick in!
 
 プラグインはデフォルトではあなたのカレントディレクトリから`Berksfile`を探します。
-Berksfileが存在すれば、`vagrant up`、`vagrant provision`、`vagrant destroy`を実行した際に自動でBerfshlefのクックブックが適用されます！
+Berksfileが存在すれば、`vagrant up`、`vagrant provision`、`vagrant destroy`を実行した際に自動でBerkshelfのクックブックが適用されます！
 
 	$ vagrant provision
 	[Berkshelf] Updating Vagrant's berkshelf: '/Users/reset/.berkshelf/vagrant/berkshelf-20130320-28478-sy1k0n'
@@ -288,7 +288,7 @@ Berksfileに記述されたクックブックは自動で仮想環境に適応�
 >Cookbooks will automatically be uploaded to the Chef Server you have configured in the Vagrantfile’s Chef Client provisioner block. Your Berkshelf configuration’s chef.node_name and chef.client_key credentials will be used to authenticate the upload.
 
 VagrantfileのChef Clientプロビジョナーのブロックで設定したクックブック群は自動的にChef Serverにアップロードされます。
-Bershelfの設定の`chef.node_name`と`chef.client_key`で指定した証明情報はアップロード時に利用されます。
+Berkshelfの設定の`chef.node_name`と`chef.client_key`で指定した証明情報はアップロード時に利用されます。
 
 ## THE BERKSFILE
 
@@ -296,7 +296,7 @@ Bershelfの設定の`chef.node_name`と`chef.client_key`で指定した証明情
 
 依存関係は`Berksfile`によって管理されます。
 BerksfileはBundlerのGemfileのようなものです。
-Berkfileの項目を利用して、何のクックブックを取得するか、またどこから取得するかを決定します。
+Berksfileの項目を利用して、何のクックブックを取得するか、またどこから取得するかを決定します。
 
 	source "https://api.berkshelf.com"
 
@@ -309,7 +309,7 @@ Berkfileの項目を利用して、何のクックブックを取得するか、
 
 >All dependencies and their dependencies (and their dependencies, etc) will be downloaded, recursively. Two keywords can be used for defining dependencies.
 
-全ての記述されたクックブックとそのクックブックに依存するもの（またそれに依存しているもの）は再起的にダウンロードされます。依存関係を明確にするために、2つのキーワードを使う事ができます。
+記述された全てのクックブックとそのクックブックに依存するもの（またそれに依存しているもの）は再起的にダウンロードされます。依存関係を明確にするために、2つのキーワードを使う事ができます。
 
 ## METADATA KEYWORD
 
@@ -367,7 +367,7 @@ Cookbookキーワードは以下のフォーマットで定義されています
 
 >The final parameter is an options hash
 
-最後のパラメーターは任意パラメーターでハッシュ値となります。
+最後のoptionsパラメーターは任意パラメーターでハッシュとなります。
 
 ## SOURCE OPTIONS
 
@@ -386,7 +386,7 @@ Cookbookキーワードは以下のフォーマットで定義されています
 
 >If a cookbook which satisfies all demands is found in berks-api.vialstudios.com then it will be retrieved and used in resolution. If it is not, then any subsequent defined sources will be used. If no sources can satisfy the demand a no solution error will be returned.
 
-例えば上記の場合、依存する全てのクックブックが`berks-api.vialstudios.com`に存在すれば本URLのみ利用してcookbookの取得を行います。
+例えば上記の場合、依存する全てのクックブックが`berks-api.vialstudios.com`に存在すれば本URLのみ利用してクックブックの取得を行います。
 もしなければ、次に定義されたURLから探索を行います。どのURLからも探索する事が出来なかった場合にはエラーとなります。
 
 >Explicit locations can be used to override the cookbooks found at these sources
@@ -397,36 +397,36 @@ Locationを指定する事で、予め設定されたクックブックの探索
 
 >The Path location is useful for rapid iteration because it does not download, copy, or move the cookbook to The Berkshelf or change the contents of the target. Instead the cookbook found at the given filepath will be used alongside the cookbooks found in The Berkshelf.
 
-Path locationを使えば、クックブックをダウンロードするのではなく、Berkshelfや他の場所からのコピーもしくは移動によって、素早く何度も実行したい場合に便利です。
-ファイルパスの指定によって見つけられたクックブックはBerkshlefから見つかったクックブックと同じように利用されます。
+Path locationを使えば、クックブックをダウンロードするのではなく、Berkshelfや他の場所からのコピーもしくは移動によって配置するので、素早く何度も実行したい場合に便利です。
+ファイルパスの指定によって見つけられたクックブックはBerkshlefにあるクックブックと同じように利用されます。
 
 	cookbook "artifact", path: "/Users/reset/code/artifact-cookbook"
 
 >The value given to the path key can only contain a single cookbook and must contain a metadata.rb file.
 
-`path`で指定するディレクトリでは一つのクックブックのみ含むものとし、必ず`metadara.rb`を配置する必要があります。
+`path`で指定するディレクトリでは一つのクックブックのみを含むものとし、必ず`metadara.rb`を配置する必要があります。
 
 ### Git Location
 
 >The Git location will clone the given Git repository to The Berkshelf if the Git repository contains a valid cookbook.
 
-Git Location は指定されたGitリポジトリが有効なクックブックを含んでいればBerkshelfにcloneを行います。
+Git Location は指定されたGitリポジトリが有効なクックブックであればBerkshelfにcloneを行います。
 
 	cookbook "mysql", git: "https://github.com/opscode-cookbooks/mysql.git"
 
 >Given the previous example, the cookbook found at the HEAD revision of the opscode-cookbooks/mysql Github project will be cloned to The Berkshelf.
 
-上記例では、Githubプロジェクトのopscode-cookbooks/mysql のHEADリビジョンがBerkshlefにcloneされます。
+上記例では、Githubのプロジェクト名opscode-cookbooks/mysql のHEADリビジョンがBerkshlefにcloneされます。
 
 >An optional branch key can be specified whose value is a branch or tag that contains the desired cookbook.
 
 任意指定のbranchキーを利用する事で指定したbranchやtagのクックブックが取得出来ます。
 
- cookbook "mysql", git: "https://github.com/opscode-cookbooks/mysql.git", branch: "foodcritic"
+	cookbook "mysql", git: "https://github.com/opscode-cookbooks/mysql.git", branch: "foodcritic"
 
 >Given the previous example, the cookbook found at branch foodcritic of the opscode-cookbooks/mysql Github project will be cloned to The Berkshelf.
 
-上記例では、Githubプロジェクトのopscode-cookbooks/mysqlのfoodcriticブランチがBerkshlefにcloneされます。
+上記例では、Githubのプロジェクト名opscode-cookbooks/mysqlのfoodcriticブランチがBerkshelfにcloneされます。
 
 >An optional tag key is an alias for branch and can be used interchangeably.
 
@@ -436,7 +436,7 @@ Git Location は指定されたGitリポジトリが有効なクックブック�
 
 >Given the previous example, the cookbook found at tag 3.0.2 of the opscode-cookbooks/mysql Github project will be cloned to The Berkshelf.
 
-上記例では、Githubプロジェクトのopscode-cookbooks/mysqlの3.0.2とタグ付けされたクックブックがBerkshlefにcloneされます。
+上記例では、Githubのプロジェクト名opscode-cookbooks/mysqlの3.0.2とタグ付けされたクックブックがBerkshelfにcloneされます。
 
 >An optional ref key can be specified for the exact SHA-1 commit ID to use and exact revision of the desired cookbook.
 
@@ -446,7 +446,7 @@ Git Location は指定されたGitリポジトリが有効なクックブック�
 
 >Given the previous example, the cookbook found at commit id eef7e65806e7ff3bdbe148e27c447ef4a8bc3881 of the opscode-cookbooks/mysql Github project will be cloned to The Berkshelf.
 
-上記例では、Githubプロジェクトのopscode-cookbooks/mysqlの3.0.2のコミットID「ef7e65806e7ff3bdbe148e27c447ef4a8bc3881」となっているクックブックがBerkshlefにcloneされます。
+上記例では、Githubのプロジェクト名opscode-cookbooks/mysqlの3.0.2のコミットID`ef7e65806e7ff3bdbe148e27c447ef4a8bc3881`となっているクックブックがBerkshelfにcloneされます。
 
 >An optional rel key can be specified if your repository contains many cookbooks in a single repository under a sub-directory or at root.
 
@@ -458,7 +458,7 @@ Git Location は指定されたGitリポジトリが有効なクックブック�
 
 上記では指定リポジトリのcookbookサブディレクトリからrightscaleというクックブックを取得します。
 
-## GitHub Location
+### GitHub Location
 
 >As of version 1.0.0, you may now use GitHub shorthand to specify a location.
 
@@ -480,7 +480,7 @@ Git Location は指定されたGitリポジトリが有効なクックブック�
 
 プライベートリポジトリを参照する際に`https`もしくは`ssh`プロトコルを利用しないとnot foundエラーとなってしまいます。
 
-## GROUPS
+### GROUPS
 
 >Adding sources to a group is useful if you want to ignore a cookbook or a set of cookbooks at install or upload time.
 
