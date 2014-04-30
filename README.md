@@ -85,7 +85,7 @@ helpコマンドを利用することでコマンドやサブコマンドの詳�
 
 >The Berkshelf is a location on your local disk which contains the cookbooks you have installed and their dependencies. By default, The Berkshelf is located at ~/.berkshelf but this can be altered by setting the environment variable BERKSHELF_PATH.
 
-Berkshlefはインストールしたクックブックとそれに依存しているクックブックをローカルに保存します。
+Berkshelfはインストールしたクックブックとそれに依存しているクックブックをローカルに保存します。
 デフォルトでは`~/.berkshelf`に配置されますが、`BERKSHELF_PATH`という環境変数を指定する事で変更する事が出来ます。
 
 >Berkshelf stores every version of a cookbook that you have ever installed. This is the same pattern found with RubyGems where once you have resolved and installed a gem, you will have that gem and it’s dependencies until you delete it.
@@ -136,7 +136,7 @@ packageコマンドによって必要なクックブック群を一つにまと�
 
 >If you don’t want to create a package but you want to install the cookbooks to a location on disk that is not the berkshelf, you can use the vendor command
 
-パッケージは作りたくないが、Berkshlefという棚にクックブックがない状態でクックブックをインストールしたい場合にはvendorコマンドを利用します。
+パッケージは作りたくないが、Berkshelfという棚にクックブックがない状態でクックブックをインストールしたい場合にはvendorコマンドを利用します。
 
 	$ berks vendor
 
@@ -180,11 +180,11 @@ Berkshlefは設定をしていなければデフォルトの設定で動作し�
 
 >vagrant.vm.box - name of the VirtualBox box to use when provisioning Vagrant virtual machines. (default: Berkshelf-CentOS-6.3-x86_64-minimal)
 
-+ VagrantのVMの名称。(デフォルト:Berkshelf-CentOS-6.3-x86_64-minimal)
++ Vagrantの仮想マシンとして利用するVirtualBoxのbox名称。(デフォルト:Berkshelf-CentOS-6.3-x86_64-minimal)
 
 >vagrant.vm.box_url - URL to the VirtualBox box (デフォルト:https://dl.dropbox.com/u/31081437/Berkshelf-CentOS-6.3-x86_64-minimal.box)
 
-+ VagrantVMのURL(デフォルト::https://dl.dropbox.com/u/31081437/Berkshelf-CentOS-6.3-x86_64-minimal.box)
++ VirtuaBoxのboxを取得するURL(デフォルト::https://dl.dropbox.com/u/31081437/Berkshelf-CentOS-6.3-x86_64-minimal.box)
 
 >vagrant.vm.forward_port - a Hash of ports to forward where the key is the port to forward to on the guest and value is the host port which forwards to the guest on your host.
 
@@ -192,7 +192,7 @@ Berkshlefは設定をしていなければデフォルトの設定で動作し�
 
 >vagrant.vm.provision - use the chef_solo or chef_client provisioner? (default: chef_solo)
 
-+ Chef_soloかchef_clinetプロビジョナーを使うか。(デフォルト:chef_solo)
++ chef_soloもしくはchef_clinetプロビジョナーを使うか。(デフォルト:chef_solo)
 
 >ssl.verify - should we verify all SSL http connections? (default: true)
 
@@ -273,13 +273,13 @@ Berksfileが存在すれば、`vagrant up`、`vagrant provision`、`vagrant dest
 
 >You can use both the Vagrant provided Chef Solo and Chef Client provisioners with the Vagrant Berkshelf plugin.
 
-Berksheflプラグインを実行するときにVagrantのChef soloとChef Clinet プロビジョナーを利用する事が出来ます。
+Berkshelfプラグインを実行するときにVagrantのChef soloとChef Clinet プロビジョナーを利用する事が出来ます。
 
 #### Chef Solo provisioner
 
 >The Chef Solo provisioner’s cookbook_path attribute is hijacked when using the Vagrant Berkshelf plugin. Cookbooks resolved from your Berksfile will automatically be made available to your Vagrant virtual machine. There is no need to explicitly set a value for cookbook_path attribute.
 
-Vagratn Berkshlefプラグインを利用している場合、Chef Soloプロビジョナーの`cookbook_path`属性は乗っ取られます。
+Vagratn Berkshelfプラグインを利用している場合、Chef Soloプロビジョナーの`cookbook_path`属性は乗っ取られます。
 Berksfileに記述されたクックブックは自動で仮想環境に適応されます。
 `cookbook_path`を設定する必要はありません。
 
@@ -398,7 +398,7 @@ Locationを指定する事で、予め設定されたクックブックの探索
 >The Path location is useful for rapid iteration because it does not download, copy, or move the cookbook to The Berkshelf or change the contents of the target. Instead the cookbook found at the given filepath will be used alongside the cookbooks found in The Berkshelf.
 
 Path locationを使えば、クックブックをダウンロードするのではなく、Berkshelfや他の場所からのコピーもしくは移動によって配置するので、素早く何度も実行したい場合に便利です。
-ファイルパスの指定によって見つけられたクックブックはBerkshlefにあるクックブックと同じように利用されます。
+ファイルパスの指定によって見つけられたクックブックはBerkshelfにあるクックブックと同じように利用されます。
 
 	cookbook "artifact", path: "/Users/reset/code/artifact-cookbook"
 
@@ -420,27 +420,27 @@ Git Location は指定されたGitリポジトリが有効なクックブック�
 
 >An optional branch key can be specified whose value is a branch or tag that contains the desired cookbook.
 
-任意指定のbranchキーを利用する事で指定したbranchやtagのクックブックが取得出来ます。
+任意指定の`branch`キーを利用する事で指定したbranchやtagのクックブックが取得出来ます。
 
 	cookbook "mysql", git: "https://github.com/opscode-cookbooks/mysql.git", branch: "foodcritic"
 
 >Given the previous example, the cookbook found at branch foodcritic of the opscode-cookbooks/mysql Github project will be cloned to The Berkshelf.
 
-上記例では、Githubのプロジェクト名opscode-cookbooks/mysqlのfoodcriticブランチがBerkshelfにcloneされます。
+上記例では、Githubのプロジェクト名opscode-cookbooks/mysqlの`foodcritic`ブランチがBerkshelfにcloneされます。
 
 >An optional tag key is an alias for branch and can be used interchangeably.
 
-任意指定のtagキーはbranchキーのエイリアスとなっており、branchキーと同じように利用出来ます。
+任意指定の`tag`キーは`branch`キーのエイリアスとなっており、branchキーと同じように利用出来ます。
 
 	cookbook “mysql”, git: “https://github.com/opscode-cookbooks/mysql.git”, tag: “3.0.2”
 
 >Given the previous example, the cookbook found at tag 3.0.2 of the opscode-cookbooks/mysql Github project will be cloned to The Berkshelf.
 
-上記例では、Githubのプロジェクト名opscode-cookbooks/mysqlの3.0.2とタグ付けされたクックブックがBerkshelfにcloneされます。
+上記例では、Githubのプロジェクト名opscode-cookbooks/mysqlの`3.0.2`とタグ付けされたクックブックがBerkshelfにcloneされます。
 
 >An optional ref key can be specified for the exact SHA-1 commit ID to use and exact revision of the desired cookbook.
 
-任意指定のrefキーはSHA-1 commit IDを指定してクックブックの取得が出来ます。
+任意指定の`ref`キーはSHA-1 commit IDを指定してクックブックの取得が出来ます。
 
 	cookbook “mysql”, git: “https://github.com/opscode-cookbooks/mysql.git”, ref: “eef7e65806e7ff3bdbe148e27c447ef4a8bc3881”
 
@@ -450,13 +450,13 @@ Git Location は指定されたGitリポジトリが有効なクックブック�
 
 >An optional rel key can be specified if your repository contains many cookbooks in a single repository under a sub-directory or at root.
 
-任意指定のrelキーは一つのリポジトリ内のルートディレクトリやサブディレクトリに他のクックブック含まれ、それを取得する場合に利用出来ます。
+任意指定の`rel`キーは一つのリポジトリ内のルートディレクトリやサブディレクトリに他のクックブック含まれ、それを取得する場合に利用出来ます。
 
 	cookbook "rightscale", git: "https://github.com/rightscale/rightscale_cookbooks.git", rel: "cookbooks/rightscale"
 
 >This will fetch the cookbook rightscale from the speficied Git location from under the cookbooks sub-directory.
 
-上記では指定リポジトリのcookbookサブディレクトリからrightscaleというクックブックを取得します。
+上記では指定リポジトリの`cookbooks`サブディレクトリから`rightscaleと`いうクックブックを取得します。
 
 ### GitHub Location
 
