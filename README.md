@@ -15,7 +15,7 @@ BerkshelfはBerkshelf Core Team によってメンテナンスされています
 >Berkshelf is now included as part of the Chef-DK. This is fastest, easiest, and the recommended installation method for getting up and running with Berkshelf.
 
 Berkshelfは現在Chef-DK(Chef Deploymant Kit)の一部として提供されています。
-上記は簡単かつ、あっという間に動作させる事ができ、Berkshelfのインストールの方法として推奨しています。
+上記は簡単かつ、すぐに動作させる事ができ、Berkshelfのインストールの方法として推奨しています。
 
 >Generate a Berksfile in a pre-exisitng cookbook
 
