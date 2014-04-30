@@ -128,7 +128,7 @@ Berkshelfは設定をしていなければデフォルトの設定で動作し�
 + `chef.validation_client_name` - Chef Validationの名称。(デフォルト:存在すればKnifeファイルの値)
 + `chef.validation_key_path` - Chef Validationのキーのパス。(デフォルト:存在すればknifeファイルの値)
 + `vagrant.vm.box` - Vagrantの仮想マシンとして利用するVirtualBoxのbox名称。(デフォルト:Berkshelf-CentOS-6.3-x86_64-minimal)
-+ `vagrant.vm.box_url` -VirtuaBoxのboxを取得するURL(デフォルト::https://dl.dropbox.com/u/31081437/Berkshelf-CentOS-6.3-x86_64-minimal.box)
++ `vagrant.vm.box_url` -VirtuaBoxのboxを取得するURL(デフォルト:https://dl.dropbox.com/u/31081437/Berkshelf-CentOS-6.3-x86_64-minimal.box)
 + `vagrant.vm.forward_port` - Vagrantでホストからゲストにフォワードするポート。
 + `vagrant.vm.provision` - `chef_solo`もしくは`chef_clinet`プロビジョナーを使うか。(デフォルト:chef_solo)
 + `ssl.verify - SSL認証を行うべきか?(デフォルト:true)
@@ -152,7 +152,7 @@ Berkshelfは繰り返し実行するクックブックやアプリに対して�
 
 ### INSTALL VAGRANT
 
-[Vagrantダウンロードページ](http://www.vagrantup.com/ "Vagrantダウンロードページ")に行って、あなたのOSの最新のインストーラーをダウンロードしましょう。
+[Vagrantダウンロードページ](http://www.vagrantup.com/downloads.html "Vagrantダウンロードページ")に行って、あなたのOSの最新のインストーラーをダウンロードしましょう。
 
 ### INSTALL THE VAGRANT BERKSHELF PLUGIN
 
@@ -346,7 +346,5 @@ groupは１行表記の場合でも記述が出来ます。
 + Michael Ivey (michael.ivey@riotgames.com)
 + Justin Campbell (justin.campbell@riotgames.com)
 + Seth Vargo (sethvargo@gmail.com)
-
->And All our contributors
 
 そして全てのコントリビューターの方々
