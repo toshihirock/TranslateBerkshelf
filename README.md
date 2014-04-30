@@ -347,4 +347,4 @@ groupは１行表記の場合でも記述が出来ます。
 + Justin Campbell (justin.campbell@riotgames.com)
 + Seth Vargo (sethvargo@gmail.com)
 
-そして全てのコントリビューターの方々
+[全てのコントリビューターの方々](https://github.com/berkshelf/berkshelf/graphs/contributors "全てのコントリビューターの方々")
