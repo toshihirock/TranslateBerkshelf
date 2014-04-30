@@ -1,6 +1,6 @@
 # はじめに
 
-+ 本ページは[Berkshelf version3のドキュメント](http://berkshelf.com/ "Berkshelf version3のドキュメント")を**非公式に勝手**に和訳したものです。
++ 本ページは[Berkshelf version3のドキュメント](http://berkshelf.com/ "Berkshelf version3のドキュメント")を**非公式に**に和訳したものです。
 + 2014年5月1日時点のものを参照したため、今後変更となる箇所がある可能性もあります。
 + 意訳した箇所もあります。
 + 動作確認を行えなかった箇所も多い為、その点はご了承ください。
