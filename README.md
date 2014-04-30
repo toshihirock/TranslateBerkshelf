@@ -10,7 +10,7 @@
 
 # Berkshelf
 
-Cookbookの管理、またCookbookの依存関係を解決するツールです。
+クックブックの管理、またクックブックの依存関係を解決するツールです。
 
 BerkshelfはBerkshelf Core Team によってメンテナンスされています。
 
