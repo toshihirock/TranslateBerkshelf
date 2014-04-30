@@ -16,7 +16,7 @@ BerkshelfはBerkshelf Core Team によってメンテナンスされています
 
 ## GETTING STARTED
 
-Berkshelfは現在Chef-DK(Chef Deploymant Kit)の一部として提供されています。
+Berkshelfは現在[Chef-DK](http://getchef.com/downloads/chef-dk "Chef-DK")(Chef Deploymant Kit)の一部として提供されています。
 Chef-DKは簡単かつ、すぐに動作させる事ができ、Berkshelfのインストールの方法として推奨しています。
 
 既に存在するクックブック内にBerksfileを作成する場合、以下のようにします。
