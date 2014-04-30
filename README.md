@@ -379,38 +379,38 @@ sourceオプションでCookbookの探索場所やグループの指定が出来
 
 >By default the location of a cookbook is assumed to come from one of the api sources that you have configured. For example
 
-デフォルトでは設定されたsourceオプションからcookbookの探索を行います。例えば
+デフォルトでは指定されたsourceオプションからクックブックの探索を行います。
 
 	source "https://berks-api.vialstudios.com"
 	source "https://api.berkshelf.com"
 
 >If a cookbook which satisfies all demands is found in berks-api.vialstudios.com then it will be retrieved and used in resolution. If it is not, then any subsequent defined sources will be used. If no sources can satisfy the demand a no solution error will be returned.
 
-上記場合、依存する全てのcookbookが`berks-api.vialstudios.com`に存在すれば本URLのみ利用してcookbookの取得を行います。
-もしなければ、次に定義されたURLから探索を行います。どのsourceからも探索する事が出来なかった場合にはエラーとなります。
+例えば上記の場合、依存する全てのクックブックが`berks-api.vialstudios.com`に存在すれば本URLのみ利用してcookbookの取得を行います。
+もしなければ、次に定義されたURLから探索を行います。どのURLからも探索する事が出来なかった場合にはエラーとなります。
 
 >Explicit locations can be used to override the cookbooks found at these sources
 
-明確な探索　それらsourceで見つかったcookbookを使う。
+本指定では元々あったクックブックを上書きする為にも利用する事が出来ます。
 
 ### Path Location
 
 >The Path location is useful for rapid iteration because it does not download, copy, or move the cookbook to The Berkshelf or change the contents of the target. Instead the cookbook found at the given filepath will be used alongside the cookbooks found in The Berkshelf.
 
 Path locationを使えば、ダウンロードではなくBerkshlefや他の場所からのコピーや移動になるので、早く何回も実施したい場合に便利です。
-ファイルパスの指定によって見つけられたcookbookはBerkshlefから見つかったcookbookと同じように利用されます。
+ファイルパスの指定によって見つけられたクックブックはBerkshlefから見つかったクックブックと同じように利用されます。
 
 	cookbook "artifact", path: "/Users/reset/code/artifact-cookbook"
 
 >The value given to the path key can only contain a single cookbook and must contain a metadata.rb file.
 
-`path`で指定するディレクトリでは一つのcookbookのみ含むものとし、必ず`metadara.rb`を配置する必要があります。
+`path`で指定するディレクトリでは一つのクックブックのみ含むものとし、必ず`metadara.rb`を配置する必要があります。
 
 ### Git Location
 
 >The Git location will clone the given Git repository to The Berkshelf if the Git repository contains a valid cookbook.
 
-Git Location は指定されたGitリポジトリが有効なcookbookであればBerkshelfにcloneを行います。
+Git Location は指定されたGitリポジトリが有効なクックブックを含んでいればBerkshelfにcloneを行います。
 
 	cookbook "mysql", git: "https://github.com/opscode-cookbooks/mysql.git"
 
@@ -420,7 +420,7 @@ Git Location は指定されたGitリポジトリが有効なcookbookであれ�
 
 >An optional branch key can be specified whose value is a branch or tag that contains the desired cookbook.
 
-任意指定のbranchキーを利用する事で指定したbranchやtagのcookbookが取得出来ます。
+任意指定のbranchキーを利用する事で指定したbranchやtagのクックブックが取得出来ます。
 
  cookbook "mysql", git: "https://github.com/opscode-cookbooks/mysql.git", branch: "foodcritic"
 
@@ -436,24 +436,84 @@ Git Location は指定されたGitリポジトリが有効なcookbookであれ�
 
 >Given the previous example, the cookbook found at tag 3.0.2 of the opscode-cookbooks/mysql Github project will be cloned to The Berkshelf.
 
-上記例では、Githubプロジェクトのopscode-cookbooks/mysqlの3.0.2とタグ付けされたcookbookがBerkshlefにcloneされます。
+上記例では、Githubプロジェクトのopscode-cookbooks/mysqlの3.0.2とタグ付けされたクックブックがBerkshlefにcloneされます。
 
 >An optional ref key can be specified for the exact SHA-1 commit ID to use and exact revision of the desired cookbook.
 
-任意指定のrefキーはSHA-1 commit IDを指定してcookbookの取得が出来ます。
+任意指定のrefキーはSHA-1 commit IDを指定してクックブックの取得が出来ます。
 
 	cookbook “mysql”, git: “https://github.com/opscode-cookbooks/mysql.git”, ref: “eef7e65806e7ff3bdbe148e27c447ef4a8bc3881”
 
 >Given the previous example, the cookbook found at commit id eef7e65806e7ff3bdbe148e27c447ef4a8bc3881 of the opscode-cookbooks/mysql Github project will be cloned to The Berkshelf.
 
-上記例では、Githubプロジェクトのopscode-cookbooks/mysqlの3.0.2のコミットID「ef7e65806e7ff3bdbe148e27c447ef4a8bc3881」となっているcookbookがBerkshlefにcloneされます。
+上記例では、Githubプロジェクトのopscode-cookbooks/mysqlの3.0.2のコミットID「ef7e65806e7ff3bdbe148e27c447ef4a8bc3881」となっているクックブックがBerkshlefにcloneされます。
 
 >An optional rel key can be specified if your repository contains many cookbooks in a single repository under a sub-directory or at root.
 
-任意指定のrelキーは一つのリポジトリ内のルートディレクトリやサブディレクトリに他のCookbookがある場合に利用出来ます。
+任意指定のrelキーは一つのリポジトリ内のルートディレクトリやサブディレクトリに他のクックブック含まれ、それを取得する場合に利用出来ます。
 
 	cookbook "rightscale", git: "https://github.com/rightscale/rightscale_cookbooks.git", rel: "cookbooks/rightscale"
 
 >This will fetch the cookbook rightscale from the speficied Git location from under the cookbooks sub-directory.
 
-上記では指定リポジトリのcookbookサブディレクトリからrightscaleというcookbookを取得します。
+上記では指定リポジトリのcookbookサブディレクトリからrightscaleというクックブックを取得します。
+
+## GitHub Location
+
+>As of version 1.0.0, you may now use GitHub shorthand to specify a location.
+
+バージョン1.0.0から、Githubリポジトリの指定方法としてより簡単に記述する事も可能となっています。
+
+	cookbook "artifact", github: "RiotGames/artifact-cookbook", tag: "0.9.8"
+
+>Given this example, the artifact cookbook from the RiotGames organization in the artifact-cookbook repository with a tag of 0.9.8 will be cloned to The Berkshelf.
+
+上記例では、`RiotGames`organizationの`artifact-cookbook`リポジトリの`0.9.8`としてタグ付けされているものを`artifact`というクックブック名としてBerkshlefにcloneされます。
+
+>The git protocol will be used if no protocol is explicity set. To access a private repository specify the ssh or https protocol.
+
+指定がない場合、`Git`プロトコルを利用して取得を行いますが、プライベートリポジトリにアクセスする場合には`https`もしくは`ssh`プロトコルを利用する事でアクセスが可能となります。
+
+	cookbook "keeping_secrets", github: "RiotGames/keeping_secrets-cookbook", protocol: :ssh
+
+>You will receive a repository not found error if you are referencing a private repository and have not set the protocol to https or ssh.
+
+プライベートリポジトリを参照する際に`https`もしくは`ssh`プロトコルを利用しないとnot foundエラーとなってしまいます。
+
+## GROUPS
+
+>Adding sources to a group is useful if you want to ignore a cookbook or a set of cookbooks at install or upload time.
+
+groupを追記する事でインストールやアップロードの際に特定のcookbookや一定の集まりのcookbook郡を対象外とする事が出来ます。
+
+>Groups can be defined via blocks:
+
+groupはブロックで指定出来ます。
+
+	group :solo do
+	  cookbook 'riot_base'
+	end
+
+>Groups can also be defined inline as an option:
+
+groupは１行表記の場合でも記述が出来ます。
+
+	cookbook 'riot_base', group: 'solo'
+
+>To exclude the groups when installing or updating just add the --without flag.
+
+コマンド実行時に`--without`を用いてグループを指定する事でインストールやアップデートの対象外とする事が出来ます。
+
+	$ berks install --without solo
+
+## AUTHORS
+
++ Jamie Winsor (jamie@vialstudios.com)
++ Josiah Kiehl (jkiehl@riotgames.com)
++ Michael Ivey (michael.ivey@riotgames.com)
++ Justin Campbell (justin.campbell@riotgames.com)
++ Seth Vargo (sethvargo@gmail.com)
+
+>And All our contributors
+
+そして全てのコントリビューターの方々
